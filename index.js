@@ -2,7 +2,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js");
-const { type } = require("os");
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -18,7 +17,7 @@ const questions = [
         console.log("Please, you need to put in a title first.");
         return false;
       }
-    }
+    },
   },
 
   // This is the description of the project
@@ -34,7 +33,7 @@ const questions = [
         console.log("Please, you need to put in a description first.");
         return false;
       }
-    }
+    },
   },
 
   // This is the installation instructions for the project
@@ -52,7 +51,7 @@ const questions = [
         );
         return false;
       }
-    }
+    },
   },
 
   // This is for the usage information for the project
@@ -60,7 +59,7 @@ const questions = [
   {
     type: "input",
     name: "usage",
-    message: "How do you primarily your project to be used? (Required)",
+    message: "How do you primarily want your project to be used? (Required)",
     validate: (userUsage) => {
       if (userUsage) {
         return true;
@@ -70,7 +69,7 @@ const questions = [
         );
         return false;
       }
-    }
+    },
   },
 
   // This is for the contribution section of the project
@@ -88,7 +87,7 @@ const questions = [
         );
         return false;
       }
-    }
+    },
   },
 
   // This is for the testing section of the project
@@ -104,7 +103,7 @@ const questions = [
         console.log("Please, tell the people how they can test your project.");
         return false;
       }
-    }
+    },
   },
 
   // This is for the license information for the project
@@ -113,6 +112,7 @@ const questions = [
     type: "checkbox",
     name: "licensing",
     message: "Please choose a license for this project. (Required)",
+    choices: ['Apache', 'MIT', 'Mozilla-Public', 'GNU-General-Public', 'Common-Development-and Distribution', 'None'],
     validate: (userLicense) => {
       if (userLicense) {
         return true;
@@ -120,7 +120,7 @@ const questions = [
         console.log("Please choose a license, even if you choose none.");
         return false;
       }
-    }
+    },
   },
 
   // This is for the GitHub username section
@@ -138,7 +138,7 @@ const questions = [
         );
         return false;
       }
-    }
+    },
   },
 
   //This is for the email address information
@@ -153,22 +153,27 @@ const questions = [
         console.log("Please, enter in a valid email address!");
         return false;
       }
-    }
+    },
   },
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, err => {
-    if (err)
-    throw err;
-    console.log ("Your file has been created succesfully. Please check the README now :)")
-
+  fs.writeFile(fileName, data, (err) => {
+    if (err) throw err;
+    console.log(
+      "Your file has been created succesfully. Please check the README now :)"
+    );
   });
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  inquirer.prompt(questions).then(function (userInputs) {
+    console.log(userInputs);
+    writeToFile("README.md", generateMarkdown(userInputs));
+  });
+}
 
 // Function call to initialize app
 init();
