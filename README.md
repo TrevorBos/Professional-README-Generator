@@ -37,5 +37,7 @@
   ## Additional Info:
   - Github: [trevorbos](https://github.com/trevorbos)
   - Email: trevor.bos@outlook.com 
+
+  ## Project:
   Made with fingers and a keyboard by Trevor Bos 🖐️
 
