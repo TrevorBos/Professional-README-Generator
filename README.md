@@ -14,7 +14,7 @@
   ## Description:
   This app was made to help the community create a professional README file for their projects by answering a few quick questions.
   
-  ##Screenshots:
+  ## Screenshots:
   ![image](https://user-images.githubusercontent.com/103614767/177007192-7455e7c6-7a5b-459a-b8c1-09773e657086.png)
   ### Link to a quick demo of the application.
   https://user-images.githubusercontent.com/103614767/177007368-6097f08c-a46a-4856-81b9-0a012943563c.mp4
